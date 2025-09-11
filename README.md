@@ -14,6 +14,29 @@
 
 TBD
 
+```html
+<li class="track-item">
+    <div class="track-number">1</div>
+    <div class="track-main">
+        <img
+            src="https://i.scdn.co/image/ab67616d000048516f51139efce47d2e01da8052"
+            alt="плохохорошо"
+            class="album-art"
+            loading="lazy"
+        />
+        <div class="track-info">
+            <div class="track-name">плохохорошо</div>
+            <div class="track-artists">iskrit, ioneweb</div>
+            <div class="track-album">плохохорошо</div>
+        </div>
+    </div>
+    <div class="track-meta">
+        <div class="duration">2:59</div>
+        <div class="popularity">♪ 30</div>
+    </div>
+</li>
+```
+
 ## Как сдавать
 
 1. Создайте форк репозитория в организации `41ISP` с названием `mobdev3-lab8-вашафамилия`
