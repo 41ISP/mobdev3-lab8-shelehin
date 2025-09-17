@@ -11,16 +11,37 @@ async function trackData() {
         trackItem.classList.add("track-item")
         const trackNumber = document.createElement("div")
         trackNumber.classList.add("track-number")
-        trackNumber.textContent = i+1
+        trackNumber.textContent = i + 1
         trackItem.appendChild(trackNumber)
         trackContainer.appendChild(trackItem)
         const trackMain = document.createElement("div")
-        trackMain.classList.add("track-main")
-        trackMain.textContent = i+1
-
-
-        
-    }
+        trackMain.classList.add("trackMain")
+        trackItem.appendChild(trackMain)
+        const albumArt = document.createElement("img")
+        albumArt.classList.add("album-art")
+        trackMain.appendChild(albumArt)
+        albumArt.src = res2[i].track.album.images[0].url
+        const trackInfo = document.createElement("div")
+        trackInfo.classList.add("track-info")
+        const trackName = document.createElement("div")
+        trackName.classList.add("track-name")
+        trackInfo.appendChild(trackName)
+        trackName.textContent = res2[i].track.name
+        trackMain.appendChild(trackName)
+        const trackArtists = document.createElement("div")
+        trackArtists.classList.add("track-artists")
+        trackArtists.textContent = res2[i].track.album.artists.map((art) => art.name).join(", ")
+        trackMain.appendChild(trackArtists)
+        const trackAlbum = document.createElement("div")
+        trackAlbum.classList.add("track-album")
+        trackAlbum.textContent = res2[i].track.album.name
+        trackMain.appendChild(trackAlbum)
+        const trackMeta = document.createElement("div")
+        trackMeta.classList.add("track-meta")
+        const duration = document.createElement("div")
+        duration.classList.add("duration")
+        duration.textContent = res2[i].track
+        }
     let totalSeconds = Math.floor(totalDuration / 1000)
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = totalSeconds % 60
