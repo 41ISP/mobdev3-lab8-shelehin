@@ -40,7 +40,12 @@ async function trackData() {
         trackMeta.classList.add("track-meta")
         const duration = document.createElement("div")
         duration.classList.add("duration")
-        duration.textContent = res2[i].track
+        duration.textContent = res2[i].track.duration_ms
+        trackItem.appendChild(duration)
+        const popularity = document.createElement("div")
+        popularity.classList.add("popularity")
+        popularity.textContent = res2[i].track.popularity
+        trackItem.appendChild(popularity)
         }
     let totalSeconds = Math.floor(totalDuration / 1000)
     let minutes = Math.floor(totalSeconds / 60)
