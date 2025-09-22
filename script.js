@@ -5,7 +5,7 @@ async function trackData() {
     const res2 = await res1.json()
     let totalDuration = 0
     for (let i = 0; i < res2.length; i++) {
-        statsContainer.textContent = `Треков: ${res2.length}`
+        // statsContainer.textContent = `Треков: ${res2.length}`
         totalDuration += res2[i].track.duration_ms
         const trackItem = document.createElement("li")
         trackItem.classList.add("track-item")
@@ -40,18 +40,29 @@ async function trackData() {
         trackMeta.classList.add("track-meta")
         const duration = document.createElement("div")
         duration.classList.add("duration")
-        duration.textContent = res2[i].track.duration_ms
+        let totalSeconds = Math.floor(totalDuration / 1000)
+        let minutes = Math.floor(totalSeconds / 60 % 60)
+        let seconds = Math.floor(totalSeconds % 60)
+        duration.textContent = `${minutes}:${seconds}`
         trackItem.appendChild(duration)
         const popularity = document.createElement("div")
         popularity.classList.add("popularity")
         popularity.textContent = res2[i].track.popularity
         trackItem.appendChild(popularity)
-        }
+    }
+    const totalTracks = document.createElement("div")
+    totalTracks.classList.add("total-tracks")
+    statsContainer.appendChild(totalTracks)
+    totalTracks.textContent = `Общее количество треков: ${res2.length}`
     let totalSeconds = Math.floor(totalDuration / 1000)
-    let minutes = Math.floor(totalSeconds / 60)
-    let seconds = totalSeconds % 60
-    let durationString = `${minutes}:${seconds}`
-    statsContainer.textContent = `Общее количество треков: ${res2.length}, общая длительность: ${durationString}`
+    let minutes = Math.floor(totalSeconds / 60 % 60)
+    let hours = Math.floor(totalSeconds / 3600 % 60)
+    let durationString = `${hours}ч : ${minutes}м`
+    const totalDurationi = document.createElement("div")
+    totalDurationi.classList.add("total-duration")
+    totalDurationi.textContent = `общая длительность: ${durationString}`
+    statsContainer.appendChild(totalDurationi)
+
 }
 
 trackData()
